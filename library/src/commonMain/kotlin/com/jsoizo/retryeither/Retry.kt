@@ -20,30 +20,25 @@ public suspend inline fun <A, B> retry(policy: RetryPolicy<A>, block: () -> Eith
         callsInPlace(block, InvocationKind.AT_LEAST_ONCE)
     }
 
-    var attempt: Attempt? = null
+    val attempt: Attempt = firstAttempt()
 
     while (true) {
         val result = block()
         result.fold({ error ->
-            if (attempt == null) {
-                attempt = firstAttempt()
-            }
-            attempt?.let { currentAttempt ->
-                val failedAttempt = currentAttempt.failedWith(error)
-                when (val instruction = policy(failedAttempt)) {
-                    StopRetrying -> {
-                        return result
-                    }
+            val failedAttempt = attempt.failedWith(error)
+            when (val instruction = policy(failedAttempt)) {
+                StopRetrying -> {
+                    return result
+                }
 
-                    ContinueRetrying -> {
-                        currentAttempt.retryImmediately()
-                    }
+                ContinueRetrying -> {
+                    attempt.retryImmediately()
+                }
 
-                    else -> {
-                        val (delayMillis) = instruction
-                        delay(delayMillis)
-                        currentAttempt.retryAfter(delayMillis)
-                    }
+                else -> {
+                    val (delayMillis) = instruction
+                    delay(delayMillis)
+                    attempt.retryAfter(delayMillis)
                 }
             }
         }, {
