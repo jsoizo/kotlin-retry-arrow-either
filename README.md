@@ -8,7 +8,7 @@ An extension library for [kotlin-retry](https://github.com/michaelbull/kotlin-re
 
 ## Overview
 
-This library extends kotlin-retry to handle Arrow's Either return types, making it easier to implement retry logic for operations that return `Either<L, R>`. It's particularly useful when you need to retry operations that may fail but use Either for error handling instead of exceptions.
+This library extends kotlin-retry to handle Arrow's Either return types, making it easier to implement retry logic for operations that return `Either<E, A>`. It's particularly useful when you need to retry operations that may fail but use Either for error handling instead of exceptions.
 
 ## Installation
 
