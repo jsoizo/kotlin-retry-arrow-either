@@ -1,5 +1,7 @@
 # kotlin-retry-arrow-either
 
+[![codecov](https://codecov.io/gh/jsoizo/kotlin-retry-arrow-either/graph/badge.svg?token=hlqka9e5Ei)](https://codecov.io/gh/jsoizo/kotlin-retry-arrow-either)
+
 ## About
 
 An extension library for [kotlin-retry](https://github.com/michaelbull/kotlin-retry) that provides retry functionality for [Arrow](https://arrow-kt.io/)'s Either type.
