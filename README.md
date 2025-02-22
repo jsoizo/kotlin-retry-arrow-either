@@ -1,5 +1,6 @@
 # kotlin-retry-arrow-either
 
+[![Maven Central Version](https://img.shields.io/maven-central/v/com.jsoizo/kotlin-retry-arrow-either)](https://central.sonatype.com/artifact/com.jsoizo/kotlin-retry-arrow-either)/
 [![codecov](https://codecov.io/gh/jsoizo/kotlin-retry-arrow-either/graph/badge.svg?token=hlqka9e5Ei)](https://codecov.io/gh/jsoizo/kotlin-retry-arrow-either)
 
 ## About
